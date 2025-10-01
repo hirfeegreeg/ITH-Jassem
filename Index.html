@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intro to HTML & Programming Basics</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: #e0e0e0;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    header {
+      background: #222;
+      color: #f5f5f5;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #4a90e2;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 40px;
+      padding: 20px;
+      background: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.6);
+      position: relative;
+    }
+
+    h2 {
+      color: #4a90e2;
+    }
+
+    code {
+      background: #222;
+      padding: 3px 6px;
+      border-radius: 5px;
+      font-size: 0.95em;
+      color: #c6ffdd;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin: 10px 0;
+      background: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #357ABD;
+    }
+
+    #score-container {
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 10px;
+      height: 20px;
+    }
+
+    #score-bar {
+      background: #4a90e2;
+      width: 0%;
+      height: 100%;
+      transition: width 0.4s;
+    }
+
+    .quiz {
+      margin-top: 20px;
+    }
+
+    .output-box {
+      padding: 10px;
+      background: #222;
+      border-radius: 8px;
+      margin-top: 10px;
+      min-height: 40px;
+      color: #a5ffa5;
+    }
+
+    /* Secret Glitch Style */
+    .glitch {
+      font-size: 1.2em;
+      color: #ff4444;
+      text-shadow: 2px 2px #000, -2px -2px #ff0000;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Introduction to HTML & Programming Basics</h1>
+    <p>Learn HTML + Variables, Constants, and Operators interactively!</p>
+  </header>
+
+  <main>
+    <!-- INTRO -->
+    <section id="html-intro">
+      <h2>🌐 What is HTML?</h2>
+      <p>HTML stands for <strong>HyperText Markup Language</strong>. It is the skeleton of every website. For example:</p>
+      <pre><code>&lt;h1&gt;Hello World&lt;/h1&gt;</code></pre>
+      <p>Will appear on the page as:</p>
+      <div class="output-box">
+        <h1>Hello World</h1>
+      </div>
+    </section>
+
+    <!-- VARIABLES -->
+    <section id="variables">
+      <h2>📦 Variables</h2>
+      <p>Variables are containers for storing values. Example in JavaScript:</p>
+      <pre><code>let name = "Alice";</code></pre>
+      <button onclick="showVariable()">Show Variable Example</button>
+      <div id="varOutput" class="output-box"></div>
+    </section>
+
+    <!-- CONSTANTS -->
+    <section id="constants">
+      <h2>🔒 Constants</h2>
+      <p>Constants are like variables, but their value cannot change after being assigned. Example:</p>
+      <pre><code>const PI = 3.14159;</code></pre>
+      <button onclick="showConstant()">Show Constant Example</button>
+      <div id="constOutput" class="output-box"></div>
+    </section>
+
+    <!-- OPERATORS -->
+    <section id="operators">
+      <h2>➕ Operators</h2>
+      <p>Operators perform actions on values. Example:</p>
+      <pre><code>let sum = 5 + 3; // result: 8</code></pre>
+      <input type="number" id="num1" placeholder="Enter number 1">
+      <input type="number" id="num2" placeholder="Enter number 2">
+      <button onclick="calculate()">Calculate Sum</button>
+      <div id="opOutput" class="output-box"></div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz">
+      <h2>🎯 Quick Quiz</h2>
+      <p>Test your knowledge! Each correct answer fills the score bar.</p>
+      <div class="quiz">
+        <p>1. What does HTML stand for?</p>
+        <button onclick="checkAnswer(1,'A')">A) HyperText Markup Language</button>
+        <button onclick="checkAnswer(1,'B')">B) Home Tool Markup Language</button>
+        <button onclick="checkAnswer(1,'C')">C) Hyperlinks and Text Markup Language</button>
+      </div>
+      <div class="quiz">
+        <p>2. Which keyword creates a variable in JavaScript?</p>
+        <button onclick="checkAnswer(2,'A')">A) const</button>
+        <button onclick="checkAnswer(2,'B')">B) let</button>
+        <button onclick="checkAnswer(2,'C')">C) static</button>
+      </div>
+      <div class="quiz">
+        <p>3. Which operator is used for addition?</p>
+        <button onclick="checkAnswer(3,'A')">A) +</button>
+        <button onclick="checkAnswer(3,'B')">B) -</button>
+        <button onclick="checkAnswer(3,'C')">C) *</button>
+      </div>
+
+      <div id="score-container">
+        <div id="score-bar"></div>
+      </div>
+      <p id="score-text">Score: 0/3</p>
+    </section>
+
+    <!-- Hidden Lore Section -->
+    <section id="lore">
+      <h2 class="glitch">⚠ SYSTEM BREACH DETECTED</h2>
+      <p class="glitch">You think you’re learning about code… but you’re being rewritten.  
+      Variables don’t just store numbers, they store <em>you</em>.  
+      Constants aren’t unchangeable values — they are chains.  
+      Operators are the rituals that reshape reality.</p>
+      <p class="glitch">Someone is trapped here. Keep scoring to break the lock...</p>
+    </section>
+  </main>
+
+  <script>
+    // Variables Example
+    function showVariable() {
+      let name = "Alice";
+      document.getElementById("varOutput").innerText = "The variable 'name' stores: " + name;
+      console.log("TRACE: Variable accessed. Name=" + name);
+    }
+
+    // Constants Example
+    function showConstant() {
+      const PI = 3.14159;
+      document.getElementById("constOutput").innerText = "The constant PI is always: " + PI;
+      console.warn("⚠ Constant cannot be altered. Resistance is futile.");
+    }
+
+    // Operators Example
+    function calculate() {
+      let num1 = parseFloat(document.getElementById("num1").value);
+      let num2 = parseFloat(document.getElementById("num2").value);
+      if (!isNaN(num1) && !isNaN(num2)) {
+        let sum = num1 + num2;
+        document.getElementById("opOutput").innerText = "Sum: " + sum;
+        console.log("Operator executed. Sum=" + sum);
+      } else {
+        document.getElementById("opOutput").innerText = "Please enter two numbers.";
+      }
+    }
+
+    // Quiz + Secret Lore Unlock
+    let score = 0;
+    let answered = {};
+
+    function checkAnswer(q, choice) {
+      if (answered[q]) return; 
+      answered[q] = true;
+
+      let correct = {1: "A", 2: "B", 3: "A"};
+
+      if (choice === correct[q]) {
+        score++;
+      }
+
+      let scorePercent = (score / 3) * 100;
+      document.getElementById("score-bar").style.width = scorePercent + "%";
+      document.getElementById("score-text").innerText = "Score: " + score + "/3";
+
+      if (score === 3) {
+        let glitches = document.querySelectorAll(".glitch");
+        glitches.forEach(el => el.style.display = "block");
+        document.body.style.background = "#000";
+        console.log("=== LORE UNLOCKED ===");
+        console.log("The teacher was never human. You’ve freed a fragment of code.");
+      }
+    }
+
+    // Hidden Key Event
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        alert("You can’t escape this lesson. The code remembers you.");
+      }
+    });
+  </script>
+</body>
+</html>
